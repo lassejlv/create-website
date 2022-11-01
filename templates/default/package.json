@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "dev": "servemon dev"
+  },
+  "devDependencies": {
+    "servemon": "^2.1.9"
+  }
+}

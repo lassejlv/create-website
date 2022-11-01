@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open sans", sans-serif;
+}
+
+body {
+  color: #eee;
+  background: rgb(16, 30, 46);
+}
+
+code {
+  color: rgb(168, 55, 196);
+  font-family: monospace;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container p {
+  color: #888;
+}
