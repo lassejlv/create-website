@@ -1,11 +1,16 @@
 {
-  "name": "create-website",
+  "name": "create-websitee",
   "version": "0.0.1",
-  "description": "",
+  "description": "⏰ Create a website in seconds...",
   "main": "src/main.js",
+  "bin": "src/main.js",
   "type": "module",
   "scripts": {
     "cli": "node src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lassv/create-website"
   },
   "keywords": [],
   "author": "",
