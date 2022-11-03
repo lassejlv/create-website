@@ -25,6 +25,9 @@ function runProgram() {
   // Gets all the template folders
   const templateFolders = fs.readdirSync("src/templates");
 
+  // Get all the package mangers from data.json
+  const packageMangers = JSON.parse(fs.readFileSync("src/data.json", "utf8"));
+
   const questions = [
     {
       type: "input",
@@ -41,10 +44,10 @@ function runProgram() {
     },
 
     {
-      type: "confirm",
-      name: "guide",
-      message: "👉🏻 Would you like to get a guide for starting your project?",
-      default: true,
+      type: "list",
+      name: "pkgManger",
+      message: "🖥  What package manger do you use?",
+      choices: packageMangers,
     },
   ];
 
@@ -56,11 +59,35 @@ function runProgram() {
       process.exit(1);
     }
 
+    // When its done with log messages
+    console.log();
+    console.log();
+    console.log("Done! Now Run:");
+    console.log();
+    console.log(chalk.gray(`cd ${chalk.cyanBright(a.dir)}`));
+
+    // Check the users pkgManger, they selected
+    if (a.pkgManger === "npm") {
+      console.log(chalk.gray(`npm install`));
+      console.log(chalk.gray(`npm run dev`));
+    } else if (a.pkgManger === "pnpm") {
+      console.log(chalk.gray(`pnpm install`));
+      console.log(chalk.gray(`pnpm dev`));
+    } else if (a.pkgManger === "yarn") {
+      console.log(chalk.gray(`yarn`));
+      console.log(chalk.gray(`yarn dev`));
+    } else {
+      console.log(chalk.red("No package manager selected"));
+    }
+
+    // Makeing some space between the logs
+    console.log();
+    console.log();
+
     // Creates the directory
     fsExtra.mkdirpSync(a.dir);
 
     // Copy the directory + files
-
     try {
       fsExtra.copySync(
         fsExtra.copySync(`./src/templates/${a.template}`, path.join(`${a.dir}`))
